@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
+import TagCloud from 'TagCloud';
 import { SKILLS } from '../constants';
 
 const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -7,33 +8,73 @@ const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   </h2>
 );
 
-const SkillsGrid: React.FC = () => (
-    <div className="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-6">
-        {SKILLS.map((skill, index) => (
-            <div
-                key={skill.name}
-                className="flex flex-col items-center justify-center p-4 bg-secondary rounded-lg shadow-lg transition-all duration-300 transform hover:scale-110 hover:shadow-accent/20 group"
-                style={{ animation: `fade-in-up 0.5s ${index * 50}ms ease-out forwards`, opacity: 0 }}
-            >
-                <div className="w-12 h-12 text-medium group-hover:text-accent transition-colors duration-300">
-                    {skill.icon}
-                </div>
-                <p className="mt-2 text-sm text-center text-medium group-hover:text-light transition-colors duration-300">
-                    {skill.name}
-                </p>
-            </div>
-        ))}
-    </div>
-);
+const SkillsSphere: React.FC = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
 
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        const container = containerRef.current;
+        
+        // Extract image sources from SKILLS to create HTML strings
+        const texts = SKILLS.map(skill => {
+            let iconHtml = skill.name;
+            if (React.isValidElement(skill.icon)) {
+                // Determine src. 
+                // In our constants, icon is <img src={src} ... />
+                const props = (skill.icon.props as any);
+                const src = props.src;
+                if (src) {
+                    // Create an HTML string for the image
+                    // We add a class for styling if needed, or inline styles
+                    iconHtml = `<img src="${src}" alt="${skill.name}" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px;" title="${skill.name}" />`;
+                }
+            }
+            return iconHtml;
+        });
+
+        const options = {
+            radius: 300,
+            maxSpeed: 'normal',
+            initSpeed: 'normal',
+            direction: 135,
+            keep: true,
+            useHTML: true
+        };
+
+        // TagCloud returns an instance, but we don't need to hold it unless we want to destroy/update
+        // However, in strict mode or re-renders, we should clean up previous instance
+        // TagCloud appends elements. So we should clear container before initializing if needed
+        // container.innerHTML = ''; // This clears the container content
+        
+        // But TagCloud appends, so cleanup is crucial.
+        // Sadly TagCloud instance.destroy() removes the listeners but might not remove the DOM elements fully cleanly or we just wipe the div.
+        
+        container.innerHTML = '';
+        
+        // @ts-ignore
+        TagCloud(container, texts, options);
+
+        return () => {
+            // Cleanup: standard way is to clear the container or destroy the instance if we had access
+            container.innerHTML = ''; 
+        };
+    }, []);
+
+    return (
+        <div className="flex justify-center items-center h-full min-h-[400px]">
+            <div ref={containerRef} className="text-light relative" style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}></div>
+        </div>
+    );
+};
 
 const Skills = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section id="skills" ref={ref} className="py-20 bg-primary overflow-hidden">
       <SectionTitle>My Tech Stack</SectionTitle>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-12">
-        <div className="md:w-1/2 w-full">
-            <SkillsGrid />
+        <div className="md:w-1/2 w-full flex justify-center">
+             <SkillsSphere />
         </div>
         <div className="md:w-1/2 text-lg text-medium space-y-4" style={{ animation: `fade-in-up 0.8s 200ms ease-out forwards`, opacity: 0 }}>
           <p>

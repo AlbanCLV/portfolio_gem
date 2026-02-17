@@ -1,55 +1,71 @@
 import React from 'react';
 import type { Skill, Project, Experience, Education } from './types';
-// FIX: Added imports for icons and data types.
-import { 
-    AWSIcon, 
-    BashIcon,
-    CIcon,
-    CppIcon,
-    Css3Icon,
-    DataStructuresIcon,
-    DockerIcon,
-    GitIcon,
-    GitLabIcon,
-    GrafanaIcon,
-    JavaIcon,
-    JavaScriptIcon,
-    LinuxIcon,
-    MongoDbIcon,
-    MySqlIcon,
-    NginxIcon,
-    NodejsIcon,
-    PostmanIcon,
-    PythonIcon,
-    ReactIcon,
-    SystemDesignIcon,
-    TypeScriptIcon
-} from './components/Icons';
 
-// FIX: Added SKILLS data export.
+// Skill Icons
+import awsIcon from './assets/skills/aws-svgrepo-com.svg';
+import azureIcon from './assets/skills/azure-active-directory-aad-svgrepo-com.svg';
+import bashIcon from './assets/skills/bash-svgrepo-com.svg';
+import burpsuiteIcon from './assets/skills/burpsuite-security-software-svgrepo-com.svg';
+import cppIcon from './assets/skills/cpp-svgrepo-com.svg';
+import cssIcon from './assets/skills/css-3-svgrepo-com.svg';
+import dockerIcon from './assets/skills/docker-svgrepo-com.svg';
+import gitIcon from './assets/skills/git-svgrepo-com.svg';
+import gitlabIcon from './assets/skills/gitlab-svgrepo-com.svg';
+import grafanaIcon from './assets/skills/grafana-svgrepo-com.svg';
+import htmlIcon from './assets/skills/html-5-svgrepo-com.svg';
+import influxdbIcon from './assets/skills/influxdb-svgrepo-com.svg';
+import javaIcon from './assets/skills/java-svgrepo-com.svg';
+import jsIcon from './assets/skills/js-svgrepo-com.svg';
+import linuxIcon from './assets/skills/linux-svgrepo-com.svg';
+import mongoIcon from './assets/skills/mongodb-logo-svgrepo-com.svg';
+import mysqlIcon from './assets/skills/mysql-logo-svgrepo-com.svg';
+import nginxIcon from './assets/skills/nginx-logo-svgrepo-com.svg';
+import nodeIcon from './assets/skills/nodejs-icon-svgrepo-com.svg';
+import opensslIcon from './assets/skills/openssl-svgrepo-com.svg';
+import postgresqlIcon from './assets/skills/postgresql-svgrepo-com.svg';
+import postmanIcon from './assets/skills/postman-icon-svgrepo-com.svg';
+import powershellIcon from './assets/skills/powershell-svgrepo-com.svg';
+import pythonIcon from './assets/skills/python-svgrepo-com.svg';
+import reactIcon from './assets/skills/react-svgrepo-com.svg';
+import restApiIcon from './assets/skills/rest-api-svgrepo-com.svg';
+import sqlAzureIcon from './assets/skills/sql-database-sql-azure-svgrepo-com.svg';
+import swaggerIcon from './assets/skills/swagger-svgrepo-com.svg';
+import ubuntuIcon from './assets/skills/ubuntu-svgrepo-com.svg';
+import vscodeIcon from './assets/skills/vs-code-svgrepo-com.svg';
+import windowsIcon from './assets/skills/windows-applications-svgrepo-com.svg';
+
 export const SKILLS: Skill[] = [
-    { name: 'C', icon: <CIcon /> },
-    { name: 'C++', icon: <CppIcon /> },
-    { name: 'Java', icon: <JavaIcon /> },
-    { name: 'Python', icon: <PythonIcon /> },
-    { name: 'JavaScript', icon: <JavaScriptIcon /> },
-    { name: 'TypeScript', icon: <TypeScriptIcon /> },
-    { name: 'React', icon: <ReactIcon /> },
-    { name: 'Node.js', icon: <NodejsIcon /> },
-    { name: 'CSS3', icon: <Css3Icon /> },
-    { name: 'Linux', icon: <LinuxIcon /> },
-    { name: 'Bash', icon: <BashIcon /> },
-    { name: 'Git', icon: <GitIcon /> },
-    { name: 'GitLab', icon: <GitLabIcon /> },
-    { name: 'Docker', icon: <DockerIcon /> },
-    { name: 'AWS', icon: <AWSIcon /> },
-    { name: 'Nginx', icon: <NginxIcon /> },
-    { name: 'MySQL', icon: <MySqlIcon /> },
-    { name: 'MongoDB', icon: <MongoDbIcon /> },
-    { name: 'Postman', icon: <PostmanIcon /> },
-    { name: 'Grafana', icon: <GrafanaIcon /> },
-    { name: 'System Design', icon: <SystemDesignIcon /> },
-    { name: 'Data Structures', icon: <DataStructuresIcon /> },
+    { name: 'C++', icon: <img src={cppIcon} alt="C++" /> },
+    { name: 'Java', icon: <img src={javaIcon} alt="Java" /> },
+    { name: 'Python', icon: <img src={pythonIcon} alt="Python" /> },
+    { name: 'JavaScript', icon: <img src={jsIcon} alt="JavaScript" /> },
+    { name: 'React', icon: <img src={reactIcon} alt="React" /> },
+    { name: 'Node.js', icon: <img src={nodeIcon} alt="Node.js" /> },
+    { name: 'HTML5', icon: <img src={htmlIcon} alt="HTML5" /> },
+    { name: 'CSS3', icon: <img src={cssIcon} alt="CSS3" /> },
+    { name: 'Linux', icon: <img src={linuxIcon} alt="Linux" /> },
+    { name: 'Ubuntu', icon: <img src={ubuntuIcon} alt="Ubuntu" /> },
+    { name: 'Bash', icon: <img src={bashIcon} alt="Bash" /> },
+    { name: 'PowerShell', icon: <img src={powershellIcon} alt="PowerShell" /> },
+    { name: 'Windows', icon: <img src={windowsIcon} alt="Windows" /> },
+    { name: 'Git', icon: <img src={gitIcon} alt="Git" /> },
+    { name: 'GitLab', icon: <img src={gitlabIcon} alt="GitLab" /> },
+    { name: 'Docker', icon: <img src={dockerIcon} alt="Docker" /> },
+    { name: 'AWS', icon: <img src={awsIcon} alt="AWS" /> },
+    { name: 'Azure', icon: <img src={azureIcon} alt="Azure" /> },
+    { name: 'Nginx', icon: <img src={nginxIcon} alt="Nginx" /> },
+    { name: 'MySQL', icon: <img src={mysqlIcon} alt="MySQL" /> },
+    { name: 'PostgreSQL', icon: <img src={postgresqlIcon} alt="PostgreSQL" /> },
+    { name: 'SQL Azure', icon: <img src={sqlAzureIcon} alt="SQL Azure" /> },
+    { name: 'MongoDB', icon: <img src={mongoIcon} alt="MongoDB" /> },
+    { name: 'InfluxDB', icon: <img src={influxdbIcon} alt="InfluxDB" /> },
+    { name: 'Postman', icon: <img src={postmanIcon} alt="Postman" /> },
+    { name: 'Swagger', icon: <img src={swaggerIcon} alt="Swagger" /> },
+    { name: 'REST API', icon: <img src={restApiIcon} alt="REST API" /> },
+    { name: 'Grafana', icon: <img src={grafanaIcon} alt="Grafana" /> },
+    { name: 'Burp Suite', icon: <img src={burpsuiteIcon} alt="Burp Suite" /> },
+    { name: 'OpenSSL', icon: <img src={opensslIcon} alt="OpenSSL" /> },
+    { name: 'VS Code', icon: <img src={vscodeIcon} alt="VS Code" /> },
 ];
 
 // FIX: Added PROJECTS data export.
