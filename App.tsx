@@ -9,7 +9,6 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import OrbBackground from './components/OrbBackground';
 
 export type SectionId = 'hero' | 'about' | 'skills' | 'projects' | 'experience' | 'education' | 'contact';
 
@@ -37,9 +36,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-transparent min-h-screen relative z-0">
-      <OrbBackground />
-      <div className="relative z-10">
+    <div className="bg-transparent min-h-screen">
+      <div>
         <Header onNavigate={handleNavigate} />
         <main className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Hero ref={heroRef} onNavigate={handleNavigate} />

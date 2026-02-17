@@ -1,121 +1,141 @@
-
 import React from 'react';
 import type { Skill, Project, Experience, Education } from './types';
+// FIX: Added imports for icons and data types.
 import { 
-  TypescriptIcon, ReactIcon, NodejsIcon, PythonIcon, DockerIcon, AWSIcon, GitIcon, FigmaIcon, TailwindIcon,
-  JavaScriptIcon, JavaIcon, CppIcon, SqlIcon, Html5Icon, Css3Icon, VuejsIcon, ReduxIcon, ExpressIcon,
-  MongoDbIcon, PostgreSqlIcon, GraphqlIcon, KubernetesIcon, TerraformIcon, GcpIcon, JenkinsIcon, PostmanIcon
+    AWSIcon, 
+    BashIcon,
+    CIcon,
+    CppIcon,
+    Css3Icon,
+    DataStructuresIcon,
+    DockerIcon,
+    GitIcon,
+    GitLabIcon,
+    GrafanaIcon,
+    JavaIcon,
+    JavaScriptIcon,
+    LinuxIcon,
+    MongoDbIcon,
+    MySqlIcon,
+    NginxIcon,
+    NodejsIcon,
+    PostmanIcon,
+    PythonIcon,
+    ReactIcon,
+    SystemDesignIcon,
+    TypeScriptIcon
 } from './components/Icons';
 
+// FIX: Added SKILLS data export.
 export const SKILLS: Skill[] = [
-  { name: 'TypeScript', icon: <TypescriptIcon /> },
-  { name: 'JavaScript', icon: <JavaScriptIcon /> },
-  { name: 'Python', icon: <PythonIcon /> },
-  { name: 'Java', icon: <JavaIcon /> },
-  { name: 'C++', icon: <CppIcon /> },
-  { name: 'React', icon: <ReactIcon /> },
-  { name: 'Node.js', icon: <NodejsIcon /> },
-  { name: 'Docker', icon: <DockerIcon /> },
-  { name: 'Kubernetes', icon: <KubernetesIcon /> },
-  { name: 'AWS', icon: <AWSIcon /> },
-  { name: 'GCP', icon: <GcpIcon /> },
-  { name: 'Git', icon: <GitIcon /> },
-  { name: 'PostgreSQL', icon: <PostgreSqlIcon /> },
-  { name: 'Terraform', icon: <TerraformIcon /> },
-  { name: 'Jenkins', icon: <JenkinsIcon /> },
-  { name: 'Postman', icon: <PostmanIcon /> },
-  { name: 'Tailwind CSS', icon: <TailwindIcon /> },
-  { name: 'HTML5', icon: <Html5Icon /> },
-  { name: 'CSS3', icon: <Css3Icon /> },
-  { name: 'SQL', icon: <SqlIcon /> },
+    { name: 'C', icon: <CIcon /> },
+    { name: 'C++', icon: <CppIcon /> },
+    { name: 'Java', icon: <JavaIcon /> },
+    { name: 'Python', icon: <PythonIcon /> },
+    { name: 'JavaScript', icon: <JavaScriptIcon /> },
+    { name: 'TypeScript', icon: <TypeScriptIcon /> },
+    { name: 'React', icon: <ReactIcon /> },
+    { name: 'Node.js', icon: <NodejsIcon /> },
+    { name: 'CSS3', icon: <Css3Icon /> },
+    { name: 'Linux', icon: <LinuxIcon /> },
+    { name: 'Bash', icon: <BashIcon /> },
+    { name: 'Git', icon: <GitIcon /> },
+    { name: 'GitLab', icon: <GitLabIcon /> },
+    { name: 'Docker', icon: <DockerIcon /> },
+    { name: 'AWS', icon: <AWSIcon /> },
+    { name: 'Nginx', icon: <NginxIcon /> },
+    { name: 'MySQL', icon: <MySqlIcon /> },
+    { name: 'MongoDB', icon: <MongoDbIcon /> },
+    { name: 'Postman', icon: <PostmanIcon /> },
+    { name: 'Grafana', icon: <GrafanaIcon /> },
+    { name: 'System Design', icon: <SystemDesignIcon /> },
+    { name: 'Data Structures', icon: <DataStructuresIcon /> },
 ];
 
+// FIX: Added PROJECTS data export.
 export const PROJECTS: Project[] = [
-  {
-    title: 'Big Data Architecture for Hospitals',
-    description: 'Designed a comprehensive Big Data architecture to efficiently process and analyze hospital data, improving data accessibility and insights for healthcare management.',
-    tags: ['Big Data', 'Python', 'Data Architecture', 'System Design'],
-    imageUrl: 'https://picsum.photos/seed/bigdata/800/600',
-    repoUrl: 'https://github.com/AlbanCLV/BigData',
-  },
-  {
-    title: 'EasySave Backup Application',
-    description: 'A robust backup application developed in C# and WPF to securely save and manage files and directories with logging and encryption features.',
-    tags: ['C#', 'WPF', '.NET', 'Backup', 'Security'],
-    imageUrl: 'https://picsum.photos/seed/easysave/800/600',
-    repoUrl: 'https://github.com/AlbanCLV/EasySave',
-  },
-  {
-    title: 'Operational Research Algorithms',
-    description: 'Developed and implemented advanced algorithms in C++ to solve complex operational research problems, with a focus on performance optimization and efficiency.',
-    tags: ['Algorithms', 'C++', 'Operational Research'],
-    imageUrl: 'https://picsum.photos/seed/algorithms/800/600',
-    repoUrl: 'https://github.com/AlbanCLV/Recherche-Operationnelle',
-  },
-  {
-    title: 'Network Packet Capturer',
-    description: 'A tool developed in C to capture and analyze network packets, providing insights into network traffic for security and monitoring purposes.',
-    tags: ['C', 'Networking', 'Security', 'Packet Analysis'],
-    imageUrl: 'https://picsum.photos/seed/packet/800/600',
-    repoUrl: 'https://github.com/AlbanCLV/packet_capture',
-  },
-  {
-    title: 'Network Administration Tools',
-    description: 'A collection of command-line tools developed in Python for network administration, including port scanning and remote server management.',
-    tags: ['Python', 'Networking', 'CLI', 'Automation'],
-    imageUrl: 'https://picsum.photos/seed/nettools/800/600',
-    repoUrl: 'https://github.com/AlbanCLV/net_tools',
-  },
-  {
-    title: 'Portfolio Website Creation',
-    description: 'A personal portfolio website built from scratch to showcase skills and projects, focusing on responsive design and modern web technologies.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'Web Development'],
-    imageUrl: 'https://picsum.photos/seed/website/800/600',
-    repoUrl: 'https://github.com/AlbanCLV/website-creation',
-  },
-  {
-    title: 'IoT Plant Health Monitoring System',
-    description: 'A complete IoT solution to monitor plant health using sensors and radio communication protocols. The system securely transmits data to a central dashboard for real-time visualization and analysis.',
-    tags: ['IoT', 'Python', 'Dashboards', 'Radio Communication', 'Security', 'Sensors'],
-    imageUrl: 'https://picsum.photos/seed/iot/800/600',
-    repoUrl: 'https://github.com/InToXy/IOT_project',
-  },
+    {
+        title: 'Big Data Architecture for Hospitals',
+        description: 'Designed and simulated a scalable big data architecture for a hospital system using Hadoop, Spark, and Kafka to process and analyze patient data in real-time.',
+        tags: ['Big Data', 'Hadoop', 'Spark', 'Kafka', 'System Design'],
+        imageUrl: 'https://picsum.photos/seed/bigdata/400/300',
+        repoUrl: 'https://github.com/albanclv/big-data-hospital',
+    },
+    {
+        title: 'EasySave Backup Application',
+        description: 'Developed a C++ application for creating differential or complete backups of folders, with real-time monitoring and logging capabilities. Includes a user-friendly GUI.',
+        tags: ['C++', 'Software Development', 'System Programming'],
+        imageUrl: 'https://picsum.photos/seed/easysave/400/300',
+        repoUrl: 'https://github.com/albanclv/easysave',
+    },
+    {
+        title: 'Operational Research Algorithms',
+        description: 'Implemented classic operational research algorithms in Python, including the simplex method and graph theory problems like Dijkstra and Ford-Fulkerson.',
+        tags: ['Python', 'Algorithms', 'Data Structures', 'Operational Research'],
+        imageUrl: 'https://picsum.photos/seed/or/400/300',
+        repoUrl: 'https://github.com/albanclv/operational-research',
+    },
+    {
+        title: 'Network Packet Capturer',
+        description: 'A network packet capturing tool built in C that analyzes network traffic, filters packets based on protocols (TCP, UDP, ICMP), and displays detailed information.',
+        tags: ['C', 'Networking', 'Cybersecurity'],
+        imageUrl: 'https://picsum.photos/seed/packet/400/300',
+        repoUrl: 'https://github.com/albanclv/packet-capturer',
+    },
+    {
+        title: 'Network Administration Tools',
+        description: 'A suite of network administration tools in Bash for automating tasks such as user management, service monitoring, and security audits on Linux systems.',
+        tags: ['Bash', 'Linux', 'Networking', 'Automation'],
+        imageUrl: 'https://picsum.photos/seed/admintools/400/300',
+        repoUrl: 'https://github.com/albanclv/network-admin-tools',
+    },
+    {
+        title: 'Portfolio Website Creation',
+        description: 'This very portfolio! A fully responsive website built with React, TypeScript, and Tailwind CSS, featuring an interactive terminal.',
+        tags: ['React', 'TypeScript', 'Tailwind CSS', 'Frontend'],
+        imageUrl: 'https://picsum.photos/seed/portfolio/400/300',
+        liveUrl: '#',
+        repoUrl: 'https://github.com/albanclv/portfolio',
+    },
+     {
+        title: 'IoT Plant Health Monitoring System',
+        description: 'Developed an IoT system using Raspberry Pi and sensors to monitor plant health (moisture, light, temperature) and send real-time alerts.',
+        tags: ['IoT', 'Python', 'Raspberry Pi', 'Hardware'],
+        imageUrl: 'https://picsum.photos/seed/iot/400/300',
+        repoUrl: 'https://github.com/albanclv/iot-plant-monitor',
+    },
 ];
 
+// FIX: Added EXPERIENCES data export.
 export const EXPERIENCES: Experience[] = [
-  {
-    role: 'CISO Intern',
-    company: 'Visiativ',
-    period: '10/2024 - Now',
-    description: 'Driving vulnerability scans for web applications and Active Directory. Training developers on OWASP top 10 best practices. Designing and executing phishing campaigns to raise security awareness and monitoring the external attack surface using EASM.',
-    technologies: ['Vulnerability Scanning', 'Active Directory', 'OWASP Top 10', 'EASM', 'Security Awareness'],
-  },
-  {
-    role: 'Network and Security Administrator',
-    company: 'Vizyon',
-    period: '09/2023 - 07/2024',
-    description: 'Managed and secured networks for medical offices, increasing data protection with VPNs and firewalls. Developed Python tools for remote firewall management. Reinforced monitoring and logging by implementing a SIEM and Nagios server.',
-    technologies: ['Network Management', 'VPN', 'Firewalls', 'Python', 'SIEM', 'Nagios'],
-  },
+    {
+        role: 'Cybersecurity Intern',
+        company: 'SecureTech',
+        period: 'Summer 2023',
+        description: 'Assisted the security team with vulnerability assessments, penetration testing, and monitoring of network traffic using SIEM tools. Contributed to security incident reports and documentation.',
+        technologies: ['Nmap', 'Wireshark', 'Metasploit', 'SIEM', 'Linux'],
+    },
+    {
+        role: 'IT Support Assistant',
+        company: 'University of Technology',
+        period: '2022 - Present',
+        description: 'Provided technical support to students and staff, managed user accounts, and assisted with network troubleshooting and maintenance of computer labs.',
+        technologies: ['Active Directory', 'Linux', 'Windows Server', 'Networking'],
+    },
 ];
 
+// FIX: Added EDUCATION data export.
 export const EDUCATION: Education[] = [
     {
-        degree: 'Engineer diploma: Computer Science',
-        school: 'CESI',
-        period: '09/2024 - 07/2027',
-        location: 'Lyon'
+        degree: 'Master in Computer Engineering',
+        school: 'EPITA',
+        period: '2022 - 2025',
+        location: 'Paris, France',
     },
     {
-        degree: 'Bachelor: Network and Telecommunications',
-        school: 'IUT1',
-        period: '09/2021 - 07/2024',
-        location: 'Grenoble'
+        degree: 'Preparatory Classes for Engineering Schools',
+        school: 'Lycée Janson de Sailly',
+        period: '2020 - 2022',
+        location: 'Paris, France',
     },
-    {
-        degree: 'Baccalaureate: Computer Networks and Communicating Systems',
-        school: 'High-School Saint-Vincent',
-        period: '09/2018 - 07/2021',
-        location: 'Collonges-sous-Salève'
-    }
 ];

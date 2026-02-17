@@ -169,10 +169,11 @@ const InteractiveTerminal: React.FC = () => {
                     // cd with no args does nothing here
                 } else if (targetDir === '..') {
                     if (cwd !== '~') {
-                        setCwd(cwd.substring(0, cwd.lastIndexOf('/')));
+                        const newCwd = cwd.substring(0, cwd.lastIndexOf('/'));
+                        setCwd(newCwd || '~');
                     }
                 } else if (targetDir) {
-                    const newPath = `${cwd}/${targetDir}`;
+                    const newPath = `${cwd}/${targetDir}`.replace('//', '/');
                     if (fileSystem[newPath] && fileSystem[newPath].type === 'dir') {
                         setCwd(newPath);
                     } else {
@@ -215,7 +216,52 @@ const InteractiveTerminal: React.FC = () => {
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Tab') {
+            e.preventDefault();
+            const parts = input.split(' ');
+            const currentPart = parts[parts.length - 1];
+
+            // Command completion
+            if (parts.length === 1) {
+                const commands = ['help', 'whoami', 'ls', 'cd', 'cat', 'contact', 'clear'];
+                const matches = commands.filter(cmd => cmd.startsWith(currentPart));
+                
+                if (matches.length === 1) {
+                    setInput(matches[0] + ' ');
+                } else if (matches.length > 1) {
+                    const newHistory = [...history, { type: 'input' as const, content: input, cwd }];
+                    newHistory.push({ type: 'output', content: matches.join('  '), cwd });
+                    setHistory(newHistory);
+                }
+            } 
+            // Argument completion
+            else if (parts.length > 1) {
+                const command = parts[0];
+                const children = fileSystem[cwd]?.children || {};
+                
+                let candidates: string[] = [];
+                if (command === 'cd') {
+                    candidates = Object.entries(children)
+                        .filter(([, type]) => type === 'dir')
+                        .map(([name]) => name);
+                } else if (command === 'cat') {
+                    candidates = Object.entries(children)
+                        .filter(([, type]) => type === 'file')
+                        .map(([name]) => name);
+                }
+                
+                const matches = candidates.filter(c => c.startsWith(currentPart));
+                
+                if (matches.length === 1) {
+                    parts[parts.length - 1] = matches[0];
+                    setInput(parts.join(' ') + ' ');
+                } else if (matches.length > 1) {
+                    const newHistory = [...history, { type: 'input' as const, content: input, cwd }];
+                    newHistory.push({ type: 'output', content: matches.join('  '), cwd });
+                    setHistory(newHistory);
+                }
+            }
+        } else if (e.key === 'Enter') {
             e.preventDefault();
             const command = input.trim();
             if(command) {
